@@ -1,0 +1,16 @@
+{
+    "manifest_version": 2,
+    "name": "CSS Reloader",
+    "description": "Reload your css without refreshing the page",
+    "version": "0.1",
+    "permissions": [
+        "tabs", "https://*", "http://", "storage"
+    ],
+    "content_scripts": [
+        {
+            "matches": ["https://*", "http://*"],
+            "js": ["js/jquery.min.js", "js/jquery.hotkeys.js", "js/reloader.js"]
+        }
+    ],
+    "options_page": "options.html"
+}
