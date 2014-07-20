@@ -7,12 +7,21 @@
     }
 
     var CSSReloader = function () {
-        this.options = global.chrome.storage.sync.get({
+        this.options = {
             hotkey: CSSReloader.DEFAULT_HOTKEY
-        });
+        };
+
+        global.chrome.storage.sync.get('hotkey', $.proxy(function loadCallback(result) {
+            this.options = $.extend(this.options, result);
+            this.initialize();
+        }, this));
+    };
+
+    CSSReloader.prototype.initialize = function () {
         this.reload_css = $.proxy(this.reload_css, this);
         this.bust_cache = $.proxy(this.bust_cache, this);
         this.cache_token = (new Date()).getTime();
+        this.bind_key();
     };
 
     CSSReloader.DEFAULT_HOTKEY = 'alt+r';
