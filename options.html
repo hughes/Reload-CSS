@@ -41,19 +41,43 @@ hr{
 .hidden {
   display: none;
 }
+
+kbd {
+    color: #000;
+    background: #eee;
+    border-style: solid;
+    border-color: #ccc #aaa #888 #bbb;
+    padding: .1em .6em;
+    border: 1px solid #ccc;
+    font-size: 11px;
+    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
+    background-color: #f7f7f7;
+    color: #333;
+    -moz-box-shadow: 0 1px 0 rgba(0,0,0,0.2),0 0 0 2px #fff inset;
+    -webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.2),0 0 0 2px #fff inset;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.2),0 0 0 2px #fff inset;
+    border-radius: 3px;
+    display: inline-block;
+    margin: 0 .1em;
+    text-shadow: 0 1px 0 #fff;
+    line-height: 1.4;
+    white-space: nowrap
+}
+
   </style>
   <script src="js/jquery.min.js"></script>
+  <script src="js/jquery.hotkeys.js"></script>
   <script src="js/options.js"></script>
+  <script src="js/main-options.js"></script>
 </head>
 <body>
   <div class="main-container">
     <h1>Configuration</h1>
     <hr />
-    <form>
-      <label>Hotkey</label>
-      <input class="subdomain" placeholder="subdomain" id="subdomain" autofocus>F7</div>
-      <hr />
-    </form>
+    Hotkey: <span id="preview"></span>
+    <hr />
+    <button id="save">Save</button>
+    <span id="result"></span>
   </div>
 </body>
 </html>

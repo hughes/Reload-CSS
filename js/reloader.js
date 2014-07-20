@@ -1,4 +1,11 @@
 (function (exports) {
+    var global;
+    if (typeof GLOBAL === 'undefined') {
+        global = window;
+    } else {
+        global = GLOBAL;
+    }
+
     var CSSReloader = function () {
         this.options = global.chrome.storage.sync.get({
             hotkey: CSSReloader.DEFAULT_HOTKEY
@@ -24,11 +31,11 @@
     };
 
     CSSReloader.prototype.bind_key = function() {
-        $(document).on('keypress', null, this.options.hotkey, this.reload_css);
+        $(document).on('keydown', null, this.options.hotkey, this.reload_css);
     };
 
     CSSReloader.prototype.unbind_key = function () {
-        $(document).off('keypress', this.reload_css);
+        $(document).off('keydown', this.reload_css);
     };
 
     CSSReloader.prototype.reload_css = function () {
