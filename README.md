@@ -1,4 +1,4 @@
-![Reload CSS logo](./img/logo_128.png)
+![Reload CSS logo](./img/logo_cropped.png)
 
 # Reload CSS
 
