@@ -47,11 +47,17 @@
         $(document).off('keydown', this.reload_css);
     };
 
+    CSSReloader.prototype.load_callback = function () {
+        $('body').addClass('_CSS_RELOAD');
+        $('body').removeClass('_CSS_RELOAD');
+    };
+
     CSSReloader.prototype.reload_css = function () {
         this.cache_token = (new Date()).getTime();
         $('link[rel=stylesheet]').each(function (i, link) {
             var $newLink = $(link).clone();
             $newLink.attr('href', this.bust_cache);
+            $newLink.on('load', this.load_callback);
             $(link).replaceWith($newLink);
         }.bind(this));
     };
