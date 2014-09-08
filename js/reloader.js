@@ -48,8 +48,12 @@
     };
 
     CSSReloader.prototype.reload_css = function () {
-        this.cache_token = (new Date()).getTime(),
-        $('link[rel=stylesheet]').attr('href', this.bust_cache);
+        this.cache_token = (new Date()).getTime();
+        $('link[rel=stylesheet]').each(function (i, link) {
+            var $newLink = $(link).clone();
+            $newLink.attr('href', this.bust_cache);
+            $(link).replaceWith($newLink);
+        }.bind(this));
     };
 
     exports.CSSReloader = CSSReloader;
